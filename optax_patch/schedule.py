@@ -24,9 +24,9 @@ def get_slope_t_stat(y, eps=1e-16):
     x = jnp.arange(N)
     x_mean = x.mean()
     y_mean = jnp.nanmean(y)
-    x_var = (x**2).mean() - x_mean**2
-    y_var = jnp.nanmean(y**2) - y_mean**2
-    cov = jnp.nanmean(x * y) - x_mean * y_mean
+    x_var = x.var()
+    y_var = jnp.nanvar(y)
+    cov = jnp.nanmean((x - x_mean) * (y - y_mean))
     t_stat = jnp.sqrt(N - 2) * cov / jnp.sqrt(x_var * y_var + eps)
     return t_stat
 
