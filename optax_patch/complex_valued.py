@@ -1,5 +1,5 @@
 from jax.tree_util import tree_map
-from optax.contrib import complex_valued
+from optax.contrib import _complex_valued as complex_valued
 
 from . import base as _base
 
